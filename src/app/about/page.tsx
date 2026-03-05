@@ -123,7 +123,7 @@ export default function AboutPage() {
               className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-3xl ring-1 ring-primary/5 aspect-square"
             >
               <Image
-                src="/public/images/about.jpg"
+               src="/images/about.jpg"
                 alt="Thrayambakam Group"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
