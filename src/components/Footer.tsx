@@ -161,8 +161,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/10 text-center text-white/50 text-sm">
           <p>
-            © {new Date().getFullYear()} Thrayambakam Bhajans Ramapuram. All
-            rights reserved.
+            © {new Date().getFullYear()} Bijali Jayalakshmi Jayan 
           </p>
         </div>
       </div>
