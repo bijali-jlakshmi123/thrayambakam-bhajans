@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  bhajans Bhajan[]
+}
+
+model Bhajan {
+  id         String   @id @default(cuid())
+  title      String
+  lyrics     String   @db.Text
+  singer     String?
+  audioUrl   String?
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  date        DateTime
+  location    String?
+  imageUrl    String?
+  type        EventType @default(UPCOMING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum EventType {
+  UPCOMING
+  LATEST
+}
+
+model GalleryItem {
+  id          String   @id @default(cuid())
+  imageUrl    String
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model Video {
+  id        String   @id @default(cuid())
+  title     String
+  youtubeId String
+  createdAt DateTime @default(now())
+}
+
+model Admin {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+}

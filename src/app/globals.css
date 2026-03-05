@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #104334;
+  --color-secondary: #0a2d23;
+  --color-accent: #ffd700;
+  --color-background-warm: #fffdf5;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fffdf5;
+  --foreground: #104334;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: #ffd700;
+  color: #104334;
+}
+
+@layer utilities {
+  .temple-gradient {
+    background: linear-gradient(135deg, #104334 0%, #0a2d23 100%);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #f0ca43 0%, #b45309 100%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+
+  .spiritual-shadow {
+    box-shadow: 0 50px 100px -20px rgba(16, 67, 52, 0.12), 0 30px 60px -30px rgba(0, 0, 0, 0.15);
+  }
+
+  .mandala-bg {
+    background-image: radial-gradient(circle at 50% 50%, rgba(16, 67, 52, 0.03) 0%, transparent 70%);
+    position: relative;
+  }
+
+  .mandala-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/simple-dashed.png");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .animate-spin-slow {
+    animation: spin 12s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ornament-border {
+    position: relative;
+  }
+
+  .ornament-border::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #ffd700, transparent, #ffd700);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.3;
+  }
 }
